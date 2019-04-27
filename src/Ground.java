@@ -1,64 +1,46 @@
 public class Ground {
     private Square[][] ground = new Square[8][8];
 
+    //constructor
     public Ground(){
         for (int j = 0; j < 8; j++) {
-            String str = "";
-            switch (j){
-                case 0:
-                    str += "A";
-                    break;
-                case 1:
-                    str += "B";
-                    break;
-                case 2:
-                    str += "C";
-                    break;
-                case 3:
-                    str += "D";
-                    break;
-                case 4:
-                    str += "E";
-                    break;
-                case 5:
-                    str += "F";
-                    break;
-                case 6:
-                    str += "G";
-                    break;
-                case 7:
-                    str += "H";
-                    break;
-            }
             for (int i = 0; i < 8; i++) {
-                String strNum = str + Integer.toString(i + 1);
-                ground[j][i] = new Square(strNum, null);
+                ground[j][i] = new Square(j, i, null);
             }
         }
     }
 
+    /**
+     * print the information of the ground on this order 'color-position-typeOfPiece'. Separated by '|'.
+     */
     public void printGround(){
         for (int j = 0; j < 8; j++) {
             for (int i = 0; i < 8; i++) {
-                //print
-                if(ground[j][i].getMohre() != null)
-                    System.out.print(j + " " + i + ": " + ground[j][i].getMohre().getColor() + "-" + ground[j][i].getStr() + ground[j][i].getMohre().getType() +  " | ");
-                else
-                    System.out.print(j + " " + i + ": " + ground[j][i].getStr() +  "null | ");
-                //
+                if (ground[j][i].getMohre() != null) {
+                    char row = (char)(ground[j][i].getRow() + 65);
+                    System.out.print(ground[j][i].getMohre().getColor() + "-" + row + "" + (ground[j][i].getColumn() + 1) + "-" + ground[j][i].getMohre().getType() + " | ");
+                } else {
+                    char row = (char)(ground[j][i].getRow() + 65);
+                    System.out.print(row + "" + (ground[j][i].getColumn() + 1) + "-" + "null | ");
+                }
             }
             System.out.println();
         }
     }
 
+    /**
+     * put the piece on the ground
+     * @param row the row of our ground
+     * @param column the column of our ground
+     * @param piece the piece that we want to put on the square
+     */
+    public void setSquare(int row, int column, ChessPieces piece){
+        Square sq = new Square(row, column, piece);
+        ground[row][column] = sq;
+    }
+
     //getter
     public Square[][] getGround() {
         return ground;
-    }
-
-    //setter
-    public void setSquare(int row, int column, ChessPieces piece){
-        Square sq = new Square(ground[row][column].getStr(), piece);
-        ground[row][column] = sq;
     }
 }

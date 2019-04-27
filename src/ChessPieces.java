@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
 abstract class ChessPieces {
-    private String str, type, color;
+    private int row, column;
+    private String type, color;
     private boolean lose;
     private ArrayList<String> possibleToGo;
 
-    public ChessPieces(String str, String color){
-        this.str = str;
+    //constructor
+    public ChessPieces(int row, int column, String color){
+        this.row = row;
+        this.column = column;
         possibleToGo = new ArrayList<>();
         lose = false;
         type = "";
@@ -22,8 +25,12 @@ abstract class ChessPieces {
         return type;
     }
 
-    public String getStr() {
-        return str;
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 
     public String getColor() {
@@ -31,8 +38,12 @@ abstract class ChessPieces {
     }
 
     //setter
-    public void setStr(String str) {
-        this.str = str;
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
     }
 
     public void setType(String type) {
@@ -41,43 +52,43 @@ abstract class ChessPieces {
 }
 
 class Pawn extends ChessPieces{
-    public Pawn(String str, String color){
-        super(str, color);
+    public Pawn(int row, int column, String color){
+        super(row, column, color);
         super.setType("Pawn");
     }
 }
 
 class Rook extends ChessPieces{
-    public Rook(String str, String color){
-        super(str, color);
+    public Rook(int row, int column, String color){
+        super(row, column, color);
         super.setType("Rook");
     }
 }
 
 class Knigth extends ChessPieces{
-    public Knigth(String str, String color){
-        super(str, color);
+    public Knigth(int row, int column,  String color){
+        super(row, column, color);
         super.setType("Knigth");
     }
 }
 
 class Bishop extends ChessPieces{
-    public Bishop(String str, String color){
-        super(str, color);
+    public Bishop(int row, int column, String color){
+        super(row, column, color);
         super.setType("Bishop");
     }
 }
 
 class Queen extends ChessPieces{
-    public Queen(String str, String color){
-        super(str, color);
+    public Queen(int row, int column, String color){
+        super(row, column, color);
         super.setType("Queen");
     }
 }
 
 class King extends ChessPieces{
-    public King(String str, String color){
-        super(str, color);
+    public King(int row, int column, String color){
+        super(row, column, color);
         super.setType("King");
     }
 }
