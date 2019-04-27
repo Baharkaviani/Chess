@@ -1,5 +1,5 @@
 public class Ground {
-    public Square[][] ground = new Square[8][8];
+    private Square[][] ground = new Square[8][8];
 
     public Ground(){
         for (int j = 0; j < 8; j++) {
@@ -39,5 +39,10 @@ public class Ground {
             }
             System.out.println();
         }
+    }
+
+    //getter
+    public Square[][] getGround() {
+        return ground;
     }
 }
