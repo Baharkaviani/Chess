@@ -32,10 +32,20 @@ public class Ground {
             }
             for (int i = 0; i < 8; i++) {
                 String strNum = str + Integer.toString(i + 1);
+                ground[j][i] = new Square(strNum, null);
+            }
+        }
+    }
+
+    public void printGround(){
+        for (int j = 0; j < 8; j++) {
+            for (int i = 0; i < 8; i++) {
                 //print
-                System.out.print(j + " " + i + ": " + strNum + " | ");
+                if(ground[j][i].getMohre() != null)
+                    System.out.print(j + " " + i + ": " + ground[j][i].getMohre().getColor() + "-" + ground[j][i].getStr() + ground[j][i].getMohre().getType() +  " | ");
+                else
+                    System.out.print(j + " " + i + ": " + ground[j][i].getStr() +  "null | ");
                 //
-                ground[i][j] = new Square(str, null);
             }
             System.out.println();
         }
@@ -44,5 +54,11 @@ public class Ground {
     //getter
     public Square[][] getGround() {
         return ground;
+    }
+
+    //setter
+    public void setSquare(int row, int column, ChessPieces piece){
+        Square sq = new Square(ground[row][column].getStr(), piece);
+        ground[row][column] = sq;
     }
 }
