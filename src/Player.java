@@ -50,14 +50,23 @@ public class Player {
     }
 
     /**
-     *
-     * @param ground
+     * find the current place and try to move the mohre of that square to new place.
+     * @param ground get the ground to find the current place and new place;
      */
     public void play(Ground ground){
         Scanner scanner = new Scanner(System.in);
         String currentPlace = scanner.next(), newPlace = scanner.next();
-
+        int currentRow = Row.valueOf(currentPlace.charAt(0)), currentColumn = ((int) (currentPlace.charAt(1) - '0' - 1));
+        int newRow = Row.valueOf(newPlace.charAt(0)), newColumn = ((int) (newPlace.charAt(1) - '0' - 1));
+        //print
+        System.out.println("currentRow " + currentRow + " currentColumn " + currentColumn);
+        System.out.println("newRow " + newRow + " newColumn " + newColumn);
+        //
+        Square currentSquare = ground.getSquare(currentRow, currentColumn);
+        //move func........
+        //currentSquare.getMohre().move();
     }
+
     //getter
     public String getCondition() {
         return condition;

@@ -39,6 +39,15 @@ public class Ground {
         ground[row][column] = sq;
     }
 
+    /**
+     * @param row get the row of square
+     * @param column get the column of square
+     * @return return the row-column square
+     */
+    public Square getSquare(int row, int column){
+        return ground[row][column];
+    }
+
     //getter
     public Square[][] getGround() {
         return ground;
