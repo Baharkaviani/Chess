@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.SplittableRandom;
 
 public class Player {
     private String color;
@@ -19,29 +20,29 @@ public class Player {
         //make objects of pieces
         if(color.equals("white")){
             for (int i = 0; i < 8 ; i++) {
-                playerPieces[i] = new Pawn(Row.G.ordinal(),i,"W");
+                playerPieces[i] = new Pawn(Row.G.ordinal(),i,"white");
             }
-            playerPieces[8] = new Rook(Row.H.ordinal(),0, "W");
-            playerPieces[9] = new Knigth(Row.H.ordinal(),1, "W");
-            playerPieces[10] = new Bishop(Row.H.ordinal(), 2, "W");
-            playerPieces[11] = new Queen(Row.H.ordinal(), 3, "W");
-            playerPieces[12] = new King(Row.H.ordinal(), 4, "W");
-            playerPieces[13] = new Bishop(Row.H.ordinal(), 5, "W");
-            playerPieces[14] = new Knigth(Row.H.ordinal(), 6, "W");
-            playerPieces[15] = new Rook(Row.H.ordinal(), 7, "W");
+            playerPieces[8] = new Rook(Row.H.ordinal(),0, "white");
+            playerPieces[9] = new Knight(Row.H.ordinal(),1, "white");
+            playerPieces[10] = new Bishop(Row.H.ordinal(), 2, "white");
+            playerPieces[11] = new Queen(Row.H.ordinal(), 3, "white");
+            playerPieces[12] = new King(Row.H.ordinal(), 4, "white");
+            playerPieces[13] = new Bishop(Row.H.ordinal(), 5, "white");
+            playerPieces[14] = new Knight(Row.H.ordinal(), 6, "white");
+            playerPieces[15] = new Rook(Row.H.ordinal(), 7, "white");
         }
         else {
             for (int i = 0; i < 8 ; i++) {
-                playerPieces[i] = new Pawn(Row.B.ordinal(), i, "B");
+                playerPieces[i] = new Pawn(Row.B.ordinal(), i, "Black");
             }
-            playerPieces[8] = new Rook(Row.A.ordinal(), 0, "B");
-            playerPieces[9] = new Knigth(Row.A.ordinal(), 1, "B");
-            playerPieces[10] = new Bishop(Row.A.ordinal(), 2, "B");
-            playerPieces[11] = new Queen(Row.A.ordinal(), 3, "B");
-            playerPieces[12] = new King(Row.A.ordinal(), 4, "B");
-            playerPieces[13] = new Bishop(Row.A.ordinal(), 5, "B");
-            playerPieces[14] = new Knigth(Row.A.ordinal(), 6, "B");
-            playerPieces[15] = new Rook(Row.A.ordinal(), 7, "B");
+            playerPieces[8] = new Rook(Row.A.ordinal(), 0, "Black");
+            playerPieces[9] = new Knight(Row.A.ordinal(), 1, "Black");
+            playerPieces[10] = new Bishop(Row.A.ordinal(), 2, "Black");
+            playerPieces[11] = new Queen(Row.A.ordinal(), 3, "Black");
+            playerPieces[12] = new King(Row.A.ordinal(), 4, "Black");
+            playerPieces[13] = new Bishop(Row.A.ordinal(), 5, "Black");
+            playerPieces[14] = new Knight(Row.A.ordinal(), 6, "Black");
+            playerPieces[15] = new Rook(Row.A.ordinal(), 7, "Black");
         }
         //put pieces on the ground
         for (int i = 0; i < 16; i++) {
@@ -53,18 +54,19 @@ public class Player {
      * find the current place and try to move the mohre of that square to new place.
      * @param ground get the ground to find the current place and new place;
      */
-    public void play(Ground ground){
-        Scanner scanner = new Scanner(System.in);
-        String currentPlace = scanner.next(), newPlace = scanner.next();
-        int currentRow = Row.valueOf(currentPlace.charAt(0)), currentColumn = ((int) (currentPlace.charAt(1) - '0' - 1));
-        int newRow = Row.valueOf(newPlace.charAt(0)), newColumn = ((int) (newPlace.charAt(1) - '0' - 1));
-        //print
-        System.out.println("currentRow " + currentRow + " currentColumn " + currentColumn);
-        System.out.println("newRow " + newRow + " newColumn " + newColumn);
-        //
-        Square currentSquare = ground.getSquare(currentRow, currentColumn);
-        //move func........
-        //currentSquare.getMohre().move();
+    public boolean play(Square currentSquare, Square newSquare, Ground ground){
+        if(currentSquare.getMohre() == null){
+            System.out.println("There is no piece to move! Try again.");
+            return false;
+        }
+        boolean move = currentSquare.getMohre().move(ground, newSquare);
+        if(move){
+            ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(currentSquare.getMohre());
+            ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
+            return true;
+        }
+        else
+            return false;
     }
 
     //getter

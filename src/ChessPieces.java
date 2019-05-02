@@ -4,7 +4,7 @@ abstract class ChessPieces {
     private int row, column;
     private String type, color;
     private boolean lose;
-    private ArrayList<String> possibleToGo;
+    private ArrayList<Square> possibleToGo;
 
     //constructor
     public ChessPieces(int row, int column, String color){
@@ -16,8 +16,23 @@ abstract class ChessPieces {
         this.color = color;
     }
 
+    /**
+     * @param sq add sq to the arrayList which shows where the piece can go
+     */
+    public void addPossibleToGo(Square sq){
+        possibleToGo.add(sq);
+    }
+
+    public void clearTheArrayList(){
+        possibleToGo.clear();
+    }
+
+    public boolean move(Ground ground, Square newSquare){
+        return false;
+    }
+
     //getter
-    public ArrayList<String> getPossibleToGo() {
+    public ArrayList<Square> getPossibleToGo() {
         return possibleToGo;
     }
 
@@ -49,12 +64,213 @@ abstract class ChessPieces {
     public void setType(String type) {
         this.type = type;
     }
+
+    public void setLose(boolean lose) {
+        this.lose = lose;
+    }
 }
 
-class Pawn extends ChessPieces{
+class Pawn extends ChessPieces implements Move{
     public Pawn(int row, int column, String color){
         super(row, column, color);
         super.setType("Pawn");
+    }
+    @Override
+    public boolean move(Ground ground, Square newSquare){
+        super.clearTheArrayList();
+        //comment examples are for white pieces
+        if(super.getColor().equals("white")){
+            //check if the piece can go up or not. And how many steps it can go
+            //if it's first move, it can go 1 or 2 steps
+            if(super.getRow() == Row.G.ordinal()){
+                if(ground.getGround()[super.getRow() - 1][super.getColumn()].getMohre() == null){
+                    Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
+                    super.addPossibleToGo(sq);
+                    //print
+                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    //
+                }
+                if(ground.getGround()[super.getRow() - 2][super.getColumn()].getMohre() == null){
+                    Square sq = ground.getSquare(super.getRow() - 2, super.getColumn());
+                    super.addPossibleToGo(sq);
+                    //print
+                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    //
+                }
+            }
+            //if not, it can go just 1 step
+            else {
+                //normal!
+                if(super.getRow() - 1 > 1) {
+                    if (ground.getGround()[super.getRow() - 1][super.getColumn()].getMohre() == null) {
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+                //if it reach to the A-Row it can change to another piece
+                /*I didn't write how to change the piece yet
+                 */
+                if(super.getRow() - 1 == 1) {
+                    if (ground.getGround()[super.getRow() - 1][super.getColumn()].getMohre() == null) {
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            //check if the piece can hit any pieces or not
+            if(super.getColumn() == 0){
+                if(ground.getGround()[super.getRow() - 1][super.getColumn() + 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() - 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            else if(super.getColumn() == 7){
+                if(ground.getGround()[super.getRow() - 1][super.getColumn() - 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() - 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            else{
+                if(ground.getGround()[super.getRow() - 1][super.getColumn() + 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() - 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+                if(ground.getGround()[super.getRow() - 1][super.getColumn() - 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() - 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+        }
+        else if(super.getColor().equals("Black")){
+            //check if the piece can go up or not. And how many steps it can go
+            //if it's first move, it can go 1 or 2 steps
+            if(super.getRow() == Row.B.ordinal()){
+                if(ground.getGround()[super.getRow() + 1][super.getColumn()].getMohre() == null){
+                    Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
+                    super.addPossibleToGo(sq);
+                    //print
+                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    //
+                }
+                if(ground.getGround()[super.getRow() + 2][super.getColumn()].getMohre() == null){
+                    Square sq = ground.getSquare(super.getRow() + 2, super.getColumn());
+                    super.addPossibleToGo(sq);
+                    //print
+                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    //
+                }
+            }
+            //if not, it can go just 1 step
+            else {
+                //normal!
+                if(super.getRow() - 1 > 1) {
+                    if (ground.getGround()[super.getRow() + 1][super.getColumn()].getMohre() == null) {
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+                //if it reach to the A-Row it can change to another piece
+                /*I didn't write how to change the piece yet
+                 */
+                if(super.getRow() - 1 == 1) {
+                    if (ground.getGround()[super.getRow() + 1][super.getColumn()].getMohre() == null) {
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            //check if the piece can hit any pieces or not
+            if(super.getColumn() == 0){
+                if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            else if(super.getColumn() == 7){
+                if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+            else{
+                if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+                if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre() != null){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        //
+                    }
+                }
+            }
+        }
+        //print
+        System.out.println("size: " + super.getPossibleToGo().size());
+        //
+        //move!!!!
+        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
+            if(super.getPossibleToGo().get(i).equals(newSquare)){
+                super.setRow(newSquare.getRow());
+                super.setColumn(newSquare.getColumn());
+                if(newSquare.getMohre() != null){
+                    newSquare.getMohre().setLose(true);
+                }
+                return true;
+            }
+        }
+        System.out.println("Can not move. Try again!");
+        return false;
     }
 }
 
@@ -65,8 +281,8 @@ class Rook extends ChessPieces{
     }
 }
 
-class Knigth extends ChessPieces{
-    public Knigth(int row, int column,  String color){
+class Knight extends ChessPieces{
+    public Knight(int row, int column,  String color){
         super(row, column, color);
         super.setType("Knigth");
     }

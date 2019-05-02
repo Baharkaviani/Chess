@@ -1,6 +1,5 @@
 public class Square {
     private int row, column;
-    private String str;
     private ChessPieces mohre;
 
     //constructor
@@ -13,10 +12,6 @@ public class Square {
     //getter
     public ChessPieces getMohre() {
         return mohre;
-    }
-
-    public String getStr() {
-        return str;
     }
 
     public int getRow() {
@@ -32,7 +27,11 @@ public class Square {
         this.mohre = mohre;
     }
 
-    public void setStr(String str) {
-        this.str = str;
-    }
+//    public void setRow(int row) {
+//        this.row = row;
+//    }
+//
+//    public void setColumn(int column) {
+//        this.column = column;
+//    }
 }
