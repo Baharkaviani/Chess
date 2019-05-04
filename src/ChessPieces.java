@@ -27,9 +27,7 @@ abstract class ChessPieces {
         possibleToGo.clear();
     }
 
-    public boolean move(Ground ground, Square newSquare){
-        return false;
-    }
+    public abstract boolean move(Ground ground, Square newSquare);
 
     //getter
     public ArrayList<Square> getPossibleToGo() {
