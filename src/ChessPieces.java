@@ -371,7 +371,7 @@ class Rook extends ChessPieces{
                     break;
             }
         }
-        //if it can go left
+        //if it can go right
         for (int i = 1; i <= 7 - super.getColumn(); i++) {
             if(ground.getGround()[super.getRow()][super.getColumn() + i].getMohre() == null){
                 Square sq = ground.getSquare(super.getRow(), super.getColumn() + i);
@@ -624,6 +624,131 @@ class Bishop extends ChessPieces{
     public Bishop(int row, int column, String color){
         super(row, column, color);
         super.setType("Bishop");
+    }
+    @Override
+    public boolean move(Ground ground, Square newSquare) {
+        super.clearTheArrayList();
+        //if it can go up and right
+        for (int i = 1; i <= super.getRow(); i++) {
+            if(super.getColumn() + i < 8) {
+                if (ground.getGround()[super.getRow() - i][super.getColumn() + i].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - i, super.getColumn() + i);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char) (sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                //if the piece reach to mohre it can't go up and right more
+                else {
+                    if (!(ground.getGround()[super.getRow() - i][super.getColumn() + i].getMohre().getColor().equals(super.getColor()))) {
+                        Square sq = ground.getSquare(super.getRow() - i, super.getColumn() + i);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char) (sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                        break;
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo
+                    else
+                        break;
+                }
+            }
+        }
+        //if it can go up and left
+        for (int i = 1; i <= super.getRow(); i++) {
+            if(super.getColumn() - i >= 0) {
+                if (ground.getGround()[super.getRow() - i][super.getColumn() - i].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - i, super.getColumn() - i);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char) (sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                //if the piece reach to mohre it can't go up and right more
+                else {
+                    if (!(ground.getGround()[super.getRow() - i][super.getColumn() - i].getMohre().getColor().equals(super.getColor()))) {
+                        Square sq = ground.getSquare(super.getRow() - i, super.getColumn() - i);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char) (sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                        break;
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo
+                    else
+                        break;
+                }
+            }
+        }
+        //if it can go down and right
+        for (int i = 1; i <= 7 - super.getRow(); i++) {
+            if(super.getColumn() + i < 8) {
+                if (ground.getGround()[super.getRow() + i][super.getColumn() + i].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + i, super.getColumn() + i);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char) (sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                } else {
+                    if (!(ground.getGround()[super.getRow() + i][super.getColumn() + i].getMohre().getColor().equals(super.getColor()))) {
+                        Square sq = ground.getSquare(super.getRow() + i, super.getColumn() + i);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char) (sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                        break;
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo
+                    else
+                        break;
+                }
+            }
+        }
+        //if it can go down and left
+        for (int i = 1; i <= 7 - super.getRow(); i++) {
+            if(super.getColumn() - i >= 0) {
+                if (ground.getGround()[super.getRow() + i][super.getColumn() - i].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + i, super.getColumn() - i);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char) (sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                } else {
+                    if (!(ground.getGround()[super.getRow() + i][super.getColumn() - i].getMohre().getColor().equals(super.getColor()))) {
+                        Square sq = ground.getSquare(super.getRow() + i, super.getColumn() - i);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char) (sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                        break;
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo
+                    else
+                        break;
+                }
+            }
+        }
+        //move!!!!
+        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
+            if (super.getPossibleToGo().get(i).equals(newSquare)) {
+                super.setRow(newSquare.getRow());
+                super.setColumn(newSquare.getColumn());
+                if (newSquare.getMohre() != null) {
+                    newSquare.getMohre().setLose(true);
+                }
+                return true;
+            }
+        }
+        System.out.println("Can not move. Try again!");
+        return false;
     }
 }
 
