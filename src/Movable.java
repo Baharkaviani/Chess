@@ -1,4 +1,4 @@
-public interface Move {
+public interface Movable {
 //    void goUpAndDown(Square square);
 //    void goLeftAndRight(Square square);
 //    void goLikeSlash(Square square);

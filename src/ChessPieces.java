@@ -27,7 +27,23 @@ abstract class ChessPieces {
         possibleToGo.clear();
     }
 
-    public abstract boolean move(Ground ground, Square newSquare);
+    public abstract void findAllPossibleToGo(Ground ground, Square newSquare);
+
+    public boolean move(Square newSquare){
+        //move!!!!
+        for (int i = 0; i < possibleToGo.size(); i++) {
+            if(possibleToGo.get(i).equals(newSquare)){
+                row = newSquare.getRow();
+                column = newSquare.getColumn();
+                if(newSquare.getMohre() != null){
+                    newSquare.getMohre().setLose(true);
+                }
+                return true;
+            }
+        }
+        System.out.println("Can not move. Try again!");
+        return false;
+    }
 
     //getter
     public ArrayList<Square> getPossibleToGo() {
@@ -74,7 +90,7 @@ class Pawn extends ChessPieces{
         super.setType("Pawn");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare){
+    public void findAllPossibleToGo(Ground ground, Square newSquare){
         super.clearTheArrayList();
         //comment examples are for white pieces
         if(super.getColor().equals("white")){
@@ -269,19 +285,6 @@ class Pawn extends ChessPieces{
                 }
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if(super.getPossibleToGo().get(i).equals(newSquare)){
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if(newSquare.getMohre() != null){
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }
 
@@ -291,7 +294,7 @@ class Rook extends ChessPieces{
         super.setType("Rook");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare){
+    public void findAllPossibleToGo(Ground ground, Square newSquare){
         super.clearTheArrayList();
         //if it can go up
         for (int i = 1; i <= super.getRow(); i++) {
@@ -394,19 +397,6 @@ class Rook extends ChessPieces{
                     break;
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if(super.getPossibleToGo().get(i).equals(newSquare)){
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if(newSquare.getMohre() != null){
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }
 
@@ -416,7 +406,7 @@ class Knight extends ChessPieces{
         super.setType("Knight");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare) {
+    public void findAllPossibleToGo(Ground ground, Square newSquare) {
         super.clearTheArrayList();
         if(super.getColumn() - 2 >= 0) {
             //c - 2, r - 1
@@ -602,19 +592,6 @@ class Knight extends ChessPieces{
                 }
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if(super.getPossibleToGo().get(i).equals(newSquare)){
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if(newSquare.getMohre() != null){
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }
 
@@ -624,7 +601,7 @@ class Bishop extends ChessPieces{
         super.setType("Bishop");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare) {
+    public void findAllPossibleToGo(Ground ground, Square newSquare) {
         super.clearTheArrayList();
         //if it can go up and right
         for (int i = 1; i <= super.getRow(); i++) {
@@ -734,19 +711,6 @@ class Bishop extends ChessPieces{
                 }
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if (super.getPossibleToGo().get(i).equals(newSquare)) {
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if (newSquare.getMohre() != null) {
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }
 
@@ -756,7 +720,7 @@ class Queen extends ChessPieces{
         super.setType("Queen");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare){
+    public void findAllPossibleToGo(Ground ground, Square newSquare){
         super.clearTheArrayList();
         //if it can go up
         for (int i = 1; i <= super.getRow(); i++) {
@@ -967,19 +931,6 @@ class Queen extends ChessPieces{
                 }
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if(super.getPossibleToGo().get(i).equals(newSquare)){
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if(newSquare.getMohre() != null){
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }
 
@@ -989,7 +940,7 @@ class King extends ChessPieces{
         super.setType("King");
     }
     @Override
-    public boolean move(Ground ground, Square newSquare){
+    public void findAllPossibleToGo(Ground ground, Square newSquare){
         super.clearTheArrayList();
         if(super.getColumn() - 1 >= 0) {
             //c - 1, r - 1
@@ -1167,18 +1118,5 @@ class King extends ChessPieces{
                 }
             }
         }
-        //move!!!!
-        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
-            if(super.getPossibleToGo().get(i).equals(newSquare)){
-                super.setRow(newSquare.getRow());
-                super.setColumn(newSquare.getColumn());
-                if(newSquare.getMohre() != null){
-                    newSquare.getMohre().setLose(true);
-                }
-                return true;
-            }
-        }
-        System.out.println("Can not move. Try again!");
-        return false;
     }
 }

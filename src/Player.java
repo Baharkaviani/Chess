@@ -1,3 +1,4 @@
+import java.net.PortUnreachableException;
 import java.util.Scanner;
 import java.util.SplittableRandom;
 
@@ -60,7 +61,8 @@ public class Player {
             System.out.println("There is no piece to move! Try again.");
             return false;
         }
-        boolean move = currentSquare.getMohre().move(ground, newSquare);
+        currentSquare.getMohre().findAllPossibleToGo(ground, newSquare);
+        boolean move = currentSquare.getMohre().move(newSquare);
         if(move){
             ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(currentSquare.getMohre());
             ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
@@ -69,6 +71,13 @@ public class Player {
         else
             return false;
     }
+
+//    /**
+//     * check that is the player in normal or kish or check Mate condition
+//     */
+//    public void checkCondition(Player competitor){
+//
+//    }
 
     //getter
     public String getCondition() {
