@@ -87,14 +87,16 @@ class Pawn extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                 }
                 if(ground.getGround()[super.getRow() - 2][super.getColumn()].getMohre() == null){
                     Square sq = ground.getSquare(super.getRow() - 2, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                 }
             }
@@ -106,7 +108,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -118,7 +121,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn());
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -130,7 +134,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -141,7 +146,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -152,7 +158,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -161,7 +168,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -175,14 +183,16 @@ class Pawn extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                 }
                 if(ground.getGround()[super.getRow() + 2][super.getColumn()].getMohre() == null){
                     Square sq = ground.getSquare(super.getRow() + 2, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                 }
             }
@@ -194,7 +204,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -206,7 +217,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn());
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -218,7 +230,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -229,7 +242,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -240,7 +254,8 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
@@ -249,15 +264,13 @@ class Pawn extends ChessPieces{
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
-                        System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
                         //
                     }
                 }
             }
         }
-        //print
-        System.out.println("size: " + super.getPossibleToGo().size());
-        //
         //move!!!!
         for (int i = 0; i < super.getPossibleToGo().size(); i++) {
             if(super.getPossibleToGo().get(i).equals(newSquare)){
@@ -288,7 +301,8 @@ class Rook extends ChessPieces{
                 Square sq = ground.getSquare(super.getRow() - i, super.getColumn());
                 super.addPossibleToGo(sq);
                 //print
-                System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                char row = (char)(sq.getRow() + 65);
+                System.out.println("" + row + (sq.getColumn() + 1));
                 //
             }
             //if the piece reach to mohre it can't go up more
@@ -297,7 +311,8 @@ class Rook extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow() - i, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                     break;
                 }
@@ -312,7 +327,8 @@ class Rook extends ChessPieces{
                 Square sq = ground.getSquare(super.getRow() + i, super.getColumn());
                 super.addPossibleToGo(sq);
                 //print
-                System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                char row = (char)(sq.getRow() + 65);
+                System.out.println("" + row + (sq.getColumn() + 1));
                 //
             }
             else{
@@ -320,7 +336,8 @@ class Rook extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow() + i, super.getColumn());
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                     break;
                 }
@@ -335,7 +352,8 @@ class Rook extends ChessPieces{
                 Square sq = ground.getSquare(super.getRow(), super.getColumn() - i);
                 super.addPossibleToGo(sq);
                 //print
-                System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                char row = (char)(sq.getRow() + 65);
+                System.out.println("" + row + (sq.getColumn() + 1));
                 //
             }
             else{
@@ -343,7 +361,8 @@ class Rook extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow(), super.getColumn() - i);
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                     break;
                 }
@@ -358,7 +377,8 @@ class Rook extends ChessPieces{
                 Square sq = ground.getSquare(super.getRow(), super.getColumn() + i);
                 super.addPossibleToGo(sq);
                 //print
-                System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                char row = (char)(sq.getRow() + 65);
+                System.out.println("" + row + (sq.getColumn() + 1));
                 //
             }
             else{
@@ -366,7 +386,8 @@ class Rook extends ChessPieces{
                     Square sq = ground.getSquare(super.getRow(), super.getColumn() + i);
                     super.addPossibleToGo(sq);
                     //print
-                    System.out.println("row: " + sq.getRow() + "column: " + sq.getColumn());
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
                     //
                     break;
                 }
@@ -395,6 +416,207 @@ class Knight extends ChessPieces{
     public Knight(int row, int column,  String color){
         super(row, column, color);
         super.setType("Knight");
+    }
+    @Override
+    public boolean move(Ground ground, Square newSquare) {
+        super.clearTheArrayList();
+        if(super.getColumn() - 2 >= 0) {
+            //c - 2, r - 1
+            if(super.getRow() - 1 >= 0) {
+                if (ground.getGround()[super.getRow() - 1][super.getColumn() - 2].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 2);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() - 1][super.getColumn() - 2].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() - 2);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+            //c - 2, r + 1
+            if(super.getRow() + 1 < 8) {
+                if (ground.getGround()[super.getRow() + 1][super.getColumn() - 2].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 2);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() + 1][super.getColumn() - 2].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 2);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+        }
+        if(super.getColumn() - 1 >= 0) {
+            //c - 1, r - 2
+            if(super.getRow() - 2 >= 0) {
+                if (ground.getGround()[super.getRow() - 2][super.getColumn() - 1].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - 2, super.getColumn() - 1);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() - 2][super.getColumn() - 1].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() - 2, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+            //c - 1, r + 2
+            if(super.getRow() + 2 < 8) {
+                if (ground.getGround()[super.getRow() + 2][super.getColumn() - 1].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + 2, super.getColumn() - 1);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() + 2][super.getColumn() - 1].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() + 2, super.getColumn() - 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+        }
+        if(super.getColumn() + 1 < 8) {
+            //c + 1, r - 2
+            if(super.getRow() - 2 >= 0) {
+                if (ground.getGround()[super.getRow() - 2][super.getColumn() + 1].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - 2, super.getColumn() + 1);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() - 2][super.getColumn() + 1].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() - 2, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+            //c + 1, r + 2
+            if(super.getRow() + 2 < 8) {
+                if (ground.getGround()[super.getRow() + 2][super.getColumn() + 1].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + 2, super.getColumn() + 1);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() + 2][super.getColumn() + 1].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() + 2, super.getColumn() + 1);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+        }
+        if(super.getColumn() + 2 < 8) {
+            //c + 2, r - 1
+            if(super.getRow() - 1 >= 0) {
+                if (ground.getGround()[super.getRow() - 1][super.getColumn() + 2].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 2);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() - 1][super.getColumn() + 2].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() - 1, super.getColumn() + 2);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+            //c + 2, r + 1
+            if(super.getRow() + 1 < 8) {
+                if (ground.getGround()[super.getRow() + 1][super.getColumn() + 2].getMohre() == null) {
+                    Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 2);
+                    super.addPossibleToGo(sq);
+                    //print
+                    char row = (char)(sq.getRow() + 65);
+                    System.out.println("" + row + (sq.getColumn() + 1));
+                    //
+                }
+                else {
+                    if(!(ground.getGround()[super.getRow() + 1][super.getColumn() + 2].getMohre().getColor().equals(super.getColor()))){
+                        Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 2);
+                        super.addPossibleToGo(sq);
+                        //print
+                        char row = (char)(sq.getRow() + 65);
+                        System.out.println("" + row + (sq.getColumn() + 1));
+                        //
+                    }
+                    //if that piece is with same color that square must not add to PossibleToGo -> do nothing!
+                }
+            }
+        }
+        //move!!!!
+        for (int i = 0; i < super.getPossibleToGo().size(); i++) {
+            if(super.getPossibleToGo().get(i).equals(newSquare)){
+                super.setRow(newSquare.getRow());
+                super.setColumn(newSquare.getColumn());
+                if(newSquare.getMohre() != null){
+                    newSquare.getMohre().setLose(true);
+                }
+                return true;
+            }
+        }
+        System.out.println("Can not move. Try again!");
+        return false;
     }
 }
 
