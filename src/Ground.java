@@ -18,10 +18,22 @@ public class Ground {
             for (int i = 0; i < 8; i++) {
                 if (ground[j][i].getMohre() != null) {
                     char row = (char)(ground[j][i].getRow() + 65);
-                    System.out.print(ground[j][i].getMohre().getColor() + "-" + row + "" + (ground[j][i].getColumn() + 1) + "-" + ground[j][i].getMohre().getType() + " | ");
+                    System.out.print(ground[j][i].getMohre().getColor() + "-" + row + "" + (ground[j][i].getColumn() + 1) + "-" /*+ ground[j][i].getMohre().getType() + " | "*/);
+                    if(ground[j][i].getMohre().getType().equals("Bishop"))
+                        System.out.print(ground[j][i].getMohre().getType() + " | ");
+                    else if(ground[j][i].getMohre().getType().equals("King"))
+                        System.out.print(ground[j][i].getMohre().getType() + "   | ");
+                    else if(ground[j][i].getMohre().getType().equals("Knight"))
+                        System.out.print(ground[j][i].getMohre().getType() + " | ");
+                    else if(ground[j][i].getMohre().getType().equals("Pawn"))
+                        System.out.print(ground[j][i].getMohre().getType() + "   | ");
+                    else if(ground[j][i].getMohre().getType().equals("Queen"))
+                        System.out.print(ground[j][i].getMohre().getType() + "  | ");
+                    else if(ground[j][i].getMohre().getType().equals("Rook"))
+                        System.out.print(ground[j][i].getMohre().getType() + "   | ");
                 } else {
                     char row = (char)(ground[j][i].getRow() + 65);
-                    System.out.print(row + "" + (ground[j][i].getColumn() + 1) + "-" + "null | ");
+                    System.out.print(row + "" + (ground[j][i].getColumn() + 1) + "-" + "null         | ");
                 }
             }
             System.out.println();

@@ -284,7 +284,7 @@ class Rook extends ChessPieces{
 class Knight extends ChessPieces{
     public Knight(int row, int column,  String color){
         super(row, column, color);
-        super.setType("Knigth");
+        super.setType("Knight");
     }
 }
 
