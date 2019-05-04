@@ -18,7 +18,7 @@ public class Ground {
             for (int i = 0; i < 8; i++) {
                 if (ground[j][i].getMohre() != null) {
                     char row = (char)(ground[j][i].getRow() + 65);
-                    System.out.print(ground[j][i].getMohre().getColor() + "-" + row + "" + (ground[j][i].getColumn() + 1) + "-" /*+ ground[j][i].getMohre().getType() + " | "*/);
+                    System.out.print(ground[j][i].getMohre().getColor() + "-" + row + "" + (ground[j][i].getColumn() + 1) + "-");
                     if(ground[j][i].getMohre().getType().equals("Bishop"))
                         System.out.print(ground[j][i].getMohre().getType() + " | ");
                     else if(ground[j][i].getMohre().getType().equals("King"))

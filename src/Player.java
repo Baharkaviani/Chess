@@ -52,6 +52,7 @@ public class Player {
 
     /**
      * find the current place and try to move the mohre of that square to new place.
+     * also set new mohre to new square if it can, so if hit sth if will lose!
      * @param ground get the ground to find the current place and new place;
      */
     public boolean play(Square currentSquare, Square newSquare, Ground ground){

@@ -70,7 +70,7 @@ abstract class ChessPieces {
     }
 }
 
-class Pawn extends ChessPieces implements Move{
+class Pawn extends ChessPieces{
     public Pawn(int row, int column, String color){
         super(row, column, color);
         super.setType("Pawn");
@@ -214,7 +214,7 @@ class Pawn extends ChessPieces implements Move{
             //check if the piece can hit any pieces or not
             if(super.getColumn() == 0){
                 if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre() != null){
-                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("white")){
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
@@ -225,7 +225,7 @@ class Pawn extends ChessPieces implements Move{
             }
             else if(super.getColumn() == 7){
                 if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre() != null){
-                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("white")){
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
@@ -236,7 +236,7 @@ class Pawn extends ChessPieces implements Move{
             }
             else{
                 if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre() != null){
-                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("Black")){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() + 1].getMohre().getColor().equals("white")){
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() + 1);
                         super.addPossibleToGo(sq);
                         //print
@@ -245,7 +245,7 @@ class Pawn extends ChessPieces implements Move{
                     }
                 }
                 if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre() != null){
-                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("Black")){
+                    if(ground.getGround()[super.getRow() + 1][super.getColumn() - 1].getMohre().getColor().equals("white")){
                         Square sq = ground.getSquare(super.getRow() + 1, super.getColumn() - 1);
                         super.addPossibleToGo(sq);
                         //print
