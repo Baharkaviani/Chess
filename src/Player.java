@@ -1,16 +1,10 @@
-import java.net.PortUnreachableException;
-import java.util.Scanner;
-import java.util.SplittableRandom;
-
 public class Player {
     private String color;
-    private String condition;
     private ChessPieces[] playerPieces = new ChessPieces[16];
 
     //constructor
     public Player(String color){
         this.color = color;
-        condition = "normal";
     }
 
     /**
@@ -52,8 +46,9 @@ public class Player {
     }
 
     /**
-     * find the current place and try to move the mohre of that square to new place.
-     * also set new mohre to new square if it can, so if hit sth if will lose!
+     * find the current place and try to move the piece of that square to new place.
+     * also set new piece to new square if it can, so if hit sth it will lose!
+     * if the movement will put player in check condition it will play back and want another movement.
      * @param ground get the ground to find the current place and new place;
      */
     public boolean play(Square currentSquare, Square newSquare, Ground ground, Player competitor, Square king){
@@ -79,7 +74,7 @@ public class Player {
                 newSquare.getMohre().moveBack(currentSquare);
                 ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(newSquare.getMohre());
                 ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(poorPiece);
-                return false;
+                return true;
             }
             //finish
             else{
@@ -101,13 +96,13 @@ public class Player {
                 competitor.getPlayerPieces()[i].findAllPossibleToGo(ground);
                 for (Square Key: competitor.getPlayerPieces()[i].getPossibleToGo()) {
                     if(Key.equals(king)) {
-                        condition = "check";
-                        return condition;
+                        return "check";
                     }
                 }
+                return "normal";
             }
         }
-        return "normal";
+        return "check mate";
     }
 
     public ChessPieces[] getPlayerPieces() {

@@ -9,6 +9,8 @@ public class Chess {
         player2.putPiecesOnGround(ground);
         ground.printGround();
         while (true){
+            boolean play = true;
+            //player1
             Square player1King = ground.getSquare(0, 0);
             for (int i = 0; i < 16; i++) {
                 if(player1.getPlayerPieces()[i].getType().equals("King")) {
@@ -25,15 +27,22 @@ public class Chess {
                 Square newSquare = ground.getSquare(newRow, newColumn);
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("white")) {
-                    boolean play = player1.play(currentSquare, newSquare, ground, player2, player1King);
+                    play = player1.play(currentSquare, newSquare, ground, player2, player1King);
                     if(play) {
                         ground.printGround();
+                        break;
+                    }
+                    else{
+                        System.out.println("White player lose!!");
                         break;
                     }
                 }
                 else
                     System.out.println("It's white turn");
             }
+            if(!play)
+                break;
+            //player2
             Square player2King = ground.getSquare(0, 0);
             for (int i = 0; i < 16; i++) {
                 if(player2.getPlayerPieces()[i].getType().equals("King")) {
@@ -50,15 +59,21 @@ public class Chess {
                 Square newSquare = ground.getSquare(newRow, newColumn);
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("Black")) {
-                    boolean play = player2.play(currentSquare, newSquare, ground, player1, player2King);
+                    play = player2.play(currentSquare, newSquare, ground, player1, player2King);
                     if(play) {
                         ground.printGround();
+                        break;
+                    }
+                    else{
+                        System.out.println("Black player lose!!");
                         break;
                     }
                 }
                 else
                     System.out.println("It's Black turn");
             }
+            if(!play)
+                break;
         }
     }
 }
