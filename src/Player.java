@@ -56,26 +56,38 @@ public class Player {
      * also set new mohre to new square if it can, so if hit sth if will lose!
      * @param ground get the ground to find the current place and new place;
      */
-    public boolean play(Square currentSquare, Square newSquare, Ground ground){
+    public boolean play(Square currentSquare, Square newSquare, Ground ground, Player competitor, Square king){
         if(currentSquare.getMohre() == null){
             System.out.println("There is no piece to move! Try again.");
             return false;
         }
         currentSquare.getMohre().findAllPossibleToGo(ground);
+        ChessPieces poorPiece = ground.getSquare(newSquare.getRow(), newSquare.getColumn()).getMohre();
         boolean move = currentSquare.getMohre().move(newSquare);
         if(move){
+            if(currentSquare.getMohre().getType().equals("King"))
+                king = newSquare;
             ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(currentSquare.getMohre());
             ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
-            return true;
+            //play
+            if(checkCondition(ground, competitor, king).equals("normal")){
+                return true;
+            }
+            //play back!
+            else if(checkCondition(ground, competitor, king).equals("check")){
+                System.out.println("You are check. Try another move!");
+                newSquare.getMohre().moveBack(currentSquare);
+                ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(newSquare.getMohre());
+                ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(poorPiece);
+                return false;
+            }
+            //finish
+            else{
+                return false;
+            }
         }
         else
             return false;
-    }
-
-    public void playBack(Square currentSquare, Square lastSquare, Ground ground){
-        currentSquare.getMohre().moveBack(lastSquare);
-        ground.getSquare(lastSquare.getRow(), lastSquare.getColumn()).setMohre(currentSquare.getMohre());
-        ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
     }
 
     /**

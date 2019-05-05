@@ -25,14 +25,8 @@ public class Chess {
                 Square newSquare = ground.getSquare(newRow, newColumn);
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("white")) {
-                    boolean play = player1.play(currentSquare, newSquare, ground);
+                    boolean play = player1.play(currentSquare, newSquare, ground, player2, player1King);
                     if(play) {
-                        if(player1.checkCondition(ground, player2, player1King).equals("check")){
-                            System.out.println("You are check. Try another move!");
-                            player1.playBack(newSquare, currentSquare, ground);
-                            ground.printGround();
-                            continue;
-                        }
                         ground.printGround();
                         break;
                     }
@@ -56,14 +50,8 @@ public class Chess {
                 Square newSquare = ground.getSquare(newRow, newColumn);
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("Black")) {
-                    boolean play = player2.play(currentSquare, newSquare, ground);
+                    boolean play = player2.play(currentSquare, newSquare, ground, player1, player2King);
                     if(play) {
-                        if (player2.checkCondition(ground, player1, player2King).equals("check")) {
-                            System.out.println("You are check. Try another move!");
-                            player2.playBack(newSquare, currentSquare, ground);
-                            ground.printGround();
-                            continue;
-                        }
                         ground.printGround();
                         break;
                     }
