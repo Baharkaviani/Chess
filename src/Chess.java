@@ -9,7 +9,7 @@ public class Chess {
         player2.putPiecesOnGround(ground);
         ground.printGround();
         while (true){
-            boolean play = true;
+            String play = "true";
             //player1
             Square player1King = ground.getSquare(0, 0);
             for (int i = 0; i < 16; i++) {
@@ -28,11 +28,13 @@ public class Chess {
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("white")) {
                     play = player1.play(currentSquare, newSquare, ground, player2, player1King);
-                    if(play) {
+                    if(play.equals("true")) {
                         ground.printGround();
                         break;
                     }
-                    else{
+                    else if(play.equals("check. Can't move!"))
+                        ground.printGround();
+                    else if(play.equals("Check Mate")){
                         System.out.println("White player lose!!");
                         break;
                     }
@@ -40,7 +42,7 @@ public class Chess {
                 else
                     System.out.println("It's white turn");
             }
-            if(!play)
+            if(play.equals("Check Mate"))
                 break;
             //player2
             Square player2King = ground.getSquare(0, 0);
@@ -60,11 +62,13 @@ public class Chess {
                 //check is it player1's turn?
                 if(currentSquare.getMohre().getColor().equals("Black")) {
                     play = player2.play(currentSquare, newSquare, ground, player1, player2King);
-                    if(play) {
+                    if(play.equals("true")) {
                         ground.printGround();
                         break;
                     }
-                    else{
+                    else if(play.equals("check. Can't move!"))
+                        ground.printGround();
+                    else if(play.equals("Check Mate")){
                         System.out.println("Black player lose!!");
                         break;
                     }
@@ -72,7 +76,7 @@ public class Chess {
                 else
                     System.out.println("It's Black turn");
             }
-            if(!play)
+            if(play.equals("Check Mate"))
                 break;
         }
     }

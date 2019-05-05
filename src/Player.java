@@ -1,10 +1,12 @@
 public class Player {
     private String color;
+    private String condition;
     private ChessPieces[] playerPieces = new ChessPieces[16];
 
     //constructor
     public Player(String color){
         this.color = color;
+        this.condition = "normal";
     }
 
     /**
@@ -51,10 +53,10 @@ public class Player {
      * if the movement will put player in check condition it will play back and want another movement.
      * @param ground get the ground to find the current place and new place;
      */
-    public boolean play(Square currentSquare, Square newSquare, Ground ground, Player competitor, Square king){
+    public String play(Square currentSquare, Square newSquare, Ground ground, Player competitor, Square king){
         if(currentSquare.getMohre() == null){
             System.out.println("There is no piece to move! Try again.");
-            return false;
+            return "false";
         }
         currentSquare.getMohre().findAllPossibleToGo(ground);
         ChessPieces poorPiece = ground.getSquare(newSquare.getRow(), newSquare.getColumn()).getMohre();
@@ -66,7 +68,7 @@ public class Player {
             ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
             //play
             if(checkCondition(ground, competitor, king).equals("normal")){
-                return true;
+                return "true";
             }
             //play back!
             else if(checkCondition(ground, competitor, king).equals("check")){
@@ -74,15 +76,17 @@ public class Player {
                 newSquare.getMohre().moveBack(currentSquare);
                 ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(newSquare.getMohre());
                 ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(poorPiece);
-                return true;
+                if(poorPiece != null)
+                    poorPiece.setLose(false);
+                return "check. Can't move!";
             }
             //finish
             else{
-                return false;
+                return "Check Mate";
             }
         }
         else
-            return false;
+            return "false";
     }
 
     /**
@@ -90,19 +94,45 @@ public class Player {
      * @param competitor
      */
     public String checkCondition(Ground ground, Player competitor, Square king){
+        condition = "normal";
         for (int i = 0; i < 16; i++) {
             //if the piece didn't lose
             if(!competitor.getPlayerPieces()[i].isLose()){
                 competitor.getPlayerPieces()[i].findAllPossibleToGo(ground);
                 for (Square Key: competitor.getPlayerPieces()[i].getPossibleToGo()) {
                     if(Key.equals(king)) {
-                        return "check";
+                        condition = "check";
+                        break;
                     }
                 }
-                return "normal";
             }
+            if(condition.equals("check"))
+                break;
         }
-        return "check mate";
+        king.getMohre().findAllPossibleToGo(ground);
+        String newCondition = "normal";
+        for (int j = 0; j < king.getMohre().getPossibleToGo().size(); j++) {
+            Square nextKing = king.getMohre().getPossibleToGo().get(j);
+            for (int i = 0; i < 16; i++) {
+                //if the piece didn't lose
+                if(!competitor.getPlayerPieces()[i].isLose()){
+                    competitor.getPlayerPieces()[i].findAllPossibleToGo(ground);
+                    for (Square Key: competitor.getPlayerPieces()[i].getPossibleToGo()) {
+                        //if the King can move it's not in checkMate condition
+                        if(Key.equals(nextKing)) {
+                            newCondition = "check";
+                            break;
+                        }
+                        newCondition = "normal";
+                    }
+                }
+            }
+            if(newCondition.equals("normal"))
+                break;
+        }
+        if(newCondition.equals("check"))
+            condition = "checkMate";
+        return condition;
     }
 
     public ChessPieces[] getPlayerPieces() {
