@@ -61,7 +61,7 @@ public class Player {
             System.out.println("There is no piece to move! Try again.");
             return false;
         }
-        currentSquare.getMohre().findAllPossibleToGo(ground, newSquare);
+        currentSquare.getMohre().findAllPossibleToGo(ground);
         boolean move = currentSquare.getMohre().move(newSquare);
         if(move){
             ground.getSquare(newSquare.getRow(), newSquare.getColumn()).setMohre(currentSquare.getMohre());
@@ -72,15 +72,33 @@ public class Player {
             return false;
     }
 
-//    /**
-//     * check that is the player in normal or kish or check Mate condition
-//     */
-//    public void checkCondition(Player competitor){
-//
-//    }
+    public void playBack(Square currentSquare, Square lastSquare, Ground ground){
+        currentSquare.getMohre().moveBack(lastSquare);
+        ground.getSquare(lastSquare.getRow(), lastSquare.getColumn()).setMohre(currentSquare.getMohre());
+        ground.getSquare(currentSquare.getRow(), currentSquare.getColumn()).setMohre(null);
+    }
 
-    //getter
-    public String getCondition() {
-        return condition;
+    /**
+     * check that is the player in normal or check or check Mate condition
+     * @param competitor
+     */
+    public String checkCondition(Ground ground, Player competitor, Square king){
+        for (int i = 0; i < 16; i++) {
+            //if the piece didn't lose
+            if(!competitor.getPlayerPieces()[i].isLose()){
+                competitor.getPlayerPieces()[i].findAllPossibleToGo(ground);
+                for (Square Key: competitor.getPlayerPieces()[i].getPossibleToGo()) {
+                    if(Key.equals(king)) {
+                        condition = "check";
+                        return condition;
+                    }
+                }
+            }
+        }
+        return "normal";
+    }
+
+    public ChessPieces[] getPlayerPieces() {
+        return playerPieces;
     }
 }
