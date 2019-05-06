@@ -1,4 +1,6 @@
-public class Square {
+import javax.swing.*;
+
+public class Square extends JButton {
     private int row, column;
     private ChessPieces mohre;
 
@@ -26,12 +28,4 @@ public class Square {
     public void setMohre(ChessPieces mohre) {
         this.mohre = mohre;
     }
-
-//    public void setRow(int row) {
-//        this.row = row;
-//    }
-//
-//    public void setColumn(int column) {
-//        this.column = column;
-//    }
 }
