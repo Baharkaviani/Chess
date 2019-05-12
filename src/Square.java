@@ -1,6 +1,4 @@
-import javax.swing.*;
-
-public class Square extends JButton {
+public class Square {
     private int row, column;
     private ChessPieces mohre;
 
